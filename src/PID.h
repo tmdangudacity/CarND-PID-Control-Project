@@ -1,5 +1,6 @@
 #ifndef PID_H
 #define PID_H
+#include <ctime>
 
 class PID
 {
@@ -37,6 +38,7 @@ class PID
         /*
          * Errors
          */
+
         double p_error;
         double i_error;
         double d_error;
@@ -51,7 +53,7 @@ class PID
         bool gain_set;
         bool initialised;
 
-        unsigned long last_timestamp;
+        clock_t last_clock_ticks;
         double last_cte;
 };
 

@@ -10,7 +10,7 @@ PID::PID()
  Kd(0.0),
  gain_set(false),
  initialised(false),
- last_timestamp(0),
+ last_clock_ticks(0),
  last_cte(0.0)
 {
 }
@@ -33,15 +33,46 @@ void PID::Init(double in_Kp, double in_Ki, double in_Kd)
               << std::endl;
 }
 
-//@TODO: Take current speed as input?
 void PID::UpdateError(double cte)
 {
-    //@TODO: Set timestamp to system time.
-    unsigned long timestamp = 0.0;
+    clock_t clock_ticks = clock();
 
     if(initialised)
     {
-        //@TODO: Calculate P_error, I_error and D_error from current cte, last cte and delta time
+        double dt = (double)(clock_ticks - last_clock_ticks) / CLOCKS_PER_SEC;
+
+        if(dt > 0.0)
+        {
+            //Calculate P_error, I_error and D_error from current cte, last cte and delta time
+            p_error = cte;
+
+            i_error += cte * dt;
+            if(i_error > 10.0)
+            {
+                i_error = 10.0;
+            }
+            else if(i_error < -10.0)
+            {
+                i_error = -10.0;
+            }
+
+            d_error = (cte - last_cte) / dt;
+
+            std::cout << "-- Cte: "             << cte
+                      << ", Clock ticks: "      << clock_ticks
+                      << ", Last clock ticks: " << last_clock_ticks
+                      << ", Dt: "               << dt
+                      << ", Perror: "           << p_error
+                      << ", Ierror: "           << i_error
+                      << ", Derror: "           << d_error
+                      << std::endl;
+        }
+        else
+        {
+            std::cout << "ERROR! Current clock_ticks: " << clock_ticks
+                      << " < Last clock_ticks: "        << last_clock_ticks
+                      << ", NOT update error terms!"  << std::endl;
+        }
     }
     else
     {
@@ -56,7 +87,7 @@ void PID::UpdateError(double cte)
     }
 
     last_cte = cte;
-    last_timestamp = timestamp;
+    last_clock_ticks = clock_ticks;
 }
 
 double PID::TotalError() const
@@ -66,8 +97,7 @@ double PID::TotalError() const
         std::cout << "Warning! All PID gains still 0.0!" << std::endl;
     }
 
-    //@TODO: Scale by speed and between -1.0 and 1.0
-    return (Kp * p_error + Ki * i_error * Kd * d_error);
+    return -(Kp * p_error + Ki * i_error * Kd * d_error);
 }
 
 bool PID::IsInitialised() const
