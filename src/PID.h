@@ -19,17 +19,17 @@ class PID
         /*
          * Initialize PID.
          */
-        void Init(double in_Kp, double in_Ki, double in_Kd);
+        bool Init(double in_Kp, double in_Ki, double in_Kd);
 
         /*
          * Update the PID error variables given cross track error.
          */
-        void UpdateError(double cte);
+        double UpdateError(double cte);
 
         /*
          * Calculate the total PID error.
          */
-        double TotalError() const;
+        //double TotalError() const;
 
         bool IsInitialised() const;
 
@@ -55,6 +55,9 @@ class PID
 
         clock_t last_clock_ticks;
         double last_cte;
+
+        unsigned int run_counter;
+        double avg_sqr_cte;
 };
 
 #endif /* PID_H */
