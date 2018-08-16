@@ -16,6 +16,7 @@ PID::PID()
  run_optimisation(false),
  sqr_cte_limit(0.0),
  avg_sqr_cte(0.0),
+ min_avg_sqr_cte(-1.0),
  run_counter(0)
 {
     memset(pid_gains, 0.0, 3);
@@ -98,6 +99,7 @@ bool PID::InitOptimisation(double init_pid_gains[],
         memcpy(gain_steps, init_gain_steps, sizeof(gain_steps));
         sqr_cte_limit    = in_sqr_cte_limit;
         max_run_counter  = in_max_run_counter;
+        min_avg_sqr_cte  = -1.0;
         run_optimisation = true;
 
         std::cout << "Optimisation"
@@ -200,28 +202,48 @@ void PID::RunOptimisation()
 {
     if(run_optimisation)
     {
-        if(avg_sqr_cte > sqr_cte_limit)
-
+        if(run_counter == max_run_counter)
         {
-            if(run_counter == max_run_counter)
+            if(-1.0 == min_avg_sqr_cte)
             {
-                //@TODO: Adjusting pid_gains at current index or update index of optimisation
-                std::cout << "Run Optimisation! Adjusting Gains and Steps ..." << std::endl;
+                min_avg_sqr_cte = avg_sqr_cte;
 
-                // Right not just restart the whole run again
-                Init(pid_gains[0], pid_gains[1], pid_gains[2]);
+                std::cout << " -- Updated Min Avg Sqr Cte: " << min_avg_sqr_cte << std::endl;
             }
-        }
-        else
-        {
-            run_optimisation = false;
+            else
+            {
+                if(avg_sqr_cte < min_avg_sqr_cte)
+                {
+                    min_avg_sqr_cte = avg_sqr_cte;
 
-            std::cout << "Optimisation completed! "
-                      << " Kp: "  << Kp
-                      << ", Ki: " << Ki
-                      << ", Kd: " << Kd
-                      << ", AvgSqrCte: " << avg_sqr_cte
-                      << std::endl;
+                    if(min_avg_sqr_cte < sqr_cte_limit)
+                    {
+                        run_optimisation = false;
+
+                        std::cout << "Optimisation Completed!"
+                                  << " Kp: "             << Kp
+                                  << ", Ki: "            << Ki
+                                  << ", Kd: "            << Kd
+                                  << ", Min AvgSqrCte: " << min_avg_sqr_cte
+                                  << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << " -- Updated Min Avg Sqr Cte: " << min_avg_sqr_cte << std::endl;
+                        std::cout << " -- Getting better. Continuing optimisation!" << std::endl;
+                        //@TODO:
+                    }
+                }
+                else
+                {
+                    std::cout << "Getting worse. Continuing optimisation!" << std::endl;
+                    //@TODO:
+                }
+            }
+
+            // Just restart the whole run again for now
+            Init(pid_gains[0], pid_gains[1], pid_gains[2]);
         }
+        //Otherwise keep running for the current epoch
     }
 }

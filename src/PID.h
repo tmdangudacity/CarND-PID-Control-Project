@@ -67,6 +67,7 @@ class PID
         unsigned int max_run_counter;
 
         double avg_sqr_cte;
+        double min_avg_sqr_cte;
         unsigned int run_counter;
 
         void RunOptimisation();
