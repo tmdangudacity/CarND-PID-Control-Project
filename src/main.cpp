@@ -34,8 +34,15 @@ int main()
 
   PID pid;
 
-  //Initialize the pid variable.
-  pid.Init(2.9, 1.75, 0.1);
+  //Initialize optimisation
+  double gains[] = {3.1,   1.8,   0.1};
+  double steps[] = {0.05, 0.05, 0.005};
+  double cte2_limit     = 0.02;  //~ average cross track +-14cm.
+  unsigned int max_runs = 1200;
+  pid.InitOptimisation(gains, steps, cte2_limit, max_runs);
+
+  //Initialize PID controller
+  //pid.Init(3.1, 1.8, 0.1);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -69,10 +76,10 @@ int main()
           }
 
           // DEBUG
-          std::cout << "CTE: "                   << cte
-                    << ", Steering demand: "     << steer_value
-                    << ", Speed: "               << speed
-                    << ", Last steering angle: " << angle
+          std::cout << " -- Cte "             << cte
+                    << ", Speed: "            << speed
+                    << ", Last steer angle: " << angle
+                    << ", Steer demand: "     << steer_value
                     << std::endl;
 
           json msgJson;
