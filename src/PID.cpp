@@ -14,9 +14,9 @@ PID::PID()
  last_clock_ticks(0),
  last_cte(0.0),
  run_optimisation(false),
- sqr_cte_limit(0.0),
- avg_sqr_cte(0.0),
- min_avg_sqr_cte(-1.0),
+ gain_step_tol(0.0),
+ sqr_err(0.0),
+ best_sqr_err(-1.0),
  run_counter(0)
 {
     memset(pid_gains, 0.0, 3);
@@ -47,7 +47,7 @@ bool PID::Init(double in_Kp, double in_Ki, double in_Kd)
 
         //Reset run counter and average squared crosstrack error
         run_counter = 0;
-        avg_sqr_cte = 0.0;
+        sqr_err = 0.0;
 
         ret = true;
 
@@ -57,9 +57,9 @@ bool PID::Init(double in_Kp, double in_Ki, double in_Kd)
         }
 
         std::cout << "PID Gains set to"
-                  << ": Kp: "       << Kp
-                  << ", Ki: "       << Ki
-                  << ", Kd: "       << Kd
+                  << ": Kp: " << Kp
+                  << ", Ki: " << Ki
+                  << ", Kd: " << Kd
                   << std::endl;
     }
     else
@@ -77,7 +77,7 @@ bool PID::Init(double in_Kp, double in_Ki, double in_Kd)
 
 bool PID::InitOptimisation(double init_pid_gains[],
                            double init_gain_steps[],
-                           double in_sqr_cte_limit,
+                           double in_gain_step_tol,
                            unsigned int in_max_run_counter)
 {
     //Array size must be 3
@@ -90,23 +90,23 @@ bool PID::InitOptimisation(double init_pid_gains[],
                (0.0 < init_gain_steps[0]) &&
                (0.0 < init_gain_steps[1]) &&
                (0.0 < init_gain_steps[2]) &&
-               (0.0 < in_sqr_cte_limit)   &&
+               (0.0 < in_gain_step_tol)   &&
                (0   < in_max_run_counter);
 
     if(ret)
     {
         memcpy(pid_gains,  init_pid_gains,  sizeof(pid_gains) );
         memcpy(gain_steps, init_gain_steps, sizeof(gain_steps));
-        sqr_cte_limit    = in_sqr_cte_limit;
+        gain_step_tol    = in_gain_step_tol;
         max_run_counter  = in_max_run_counter;
-        min_avg_sqr_cte  = -1.0;
+        best_sqr_err  = -1.0;
         run_optimisation = true;
 
         std::cout << "Optimisation"
-                  << ", Parameters ("      << pid_gains[0]  << ", " << pid_gains[1]  << ", " << pid_gains[2]  << ")"
-                  << ", Parameter Steps (" << gain_steps[0] << ", " << gain_steps[1] << ", " << gain_steps[2] << ")"
-                  << ", SqrCteLimit: "     << sqr_cte_limit
-                  << ", MaxRunCounter: "   << max_run_counter
+                  << ", PID Gains ("           << pid_gains[0]  << ", " << pid_gains[1]  << ", " << pid_gains[2]  << ")"
+                  << ", Gain Steps ("          << gain_steps[0] << ", " << gain_steps[1] << ", " << gain_steps[2] << ")"
+                  << ", Gain Step Tolerance: " << gain_step_tol
+                  << ", MaxRunCounter: "       << max_run_counter
                   << std::endl;
 
         //Initialise PID controller using initial parameters
@@ -166,7 +166,7 @@ double PID::UpdateError(double cte)
         }
     }
 
-    avg_sqr_cte = (run_counter * avg_sqr_cte + (cte * cte)) / (run_counter + 1);
+    sqr_err = (run_counter * sqr_err + (cte * cte)) / (run_counter + 1);
     ++run_counter;
 
     double pid_output = -( (Kp * p_error) + (Ki * i_error) + (Kd * d_error) );
@@ -180,8 +180,8 @@ double PID::UpdateError(double cte)
               << ", Ierr: "         << i_error
               << ", Derr: "         << d_error
               << ", PID: "          << pid_output
-              << ", Optimisation: " << (run_optimisation ? "YES":"NO")
-              << ", AvgSqrCte: "    << avg_sqr_cte
+              << ", Optimisation: " << (run_optimisation ? "ON":"OFF")
+              << ", SqrError: "     << sqr_err
               << ", Counter: "      << run_counter
               << std::endl;
 
@@ -200,50 +200,111 @@ bool PID::IsInitialised() const
 
 void PID::RunOptimisation()
 {
+    static unsigned int iter  = 0;
+    static unsigned int index = 0;
+    static unsigned int step_index = 0;
+
     if(run_optimisation)
     {
+        //One lap completed
         if(run_counter == max_run_counter)
         {
-            if(-1.0 == min_avg_sqr_cte)
+            if( gain_step_tol < (gain_steps[0] + gain_steps[1] + gain_steps[2]) )
             {
-                min_avg_sqr_cte = avg_sqr_cte;
-
-                std::cout << " -- Updated Min Avg Sqr Cte: " << min_avg_sqr_cte << std::endl;
-            }
-            else
-            {
-                if(avg_sqr_cte < min_avg_sqr_cte)
+                if(-1.0 == best_sqr_err)
                 {
-                    min_avg_sqr_cte = avg_sqr_cte;
+                    //Set best error the first time
+                    best_sqr_err = sqr_err;
 
-                    if(min_avg_sqr_cte < sqr_cte_limit)
+                    //At iteration 0
+                    std::cout << "Optimisation iteration " << iter << ", Best SqrErr: " << best_sqr_err << std::endl;
+                }
+
+                //Step 0 for each index
+                if(0 == step_index)
+                {
+                    //Add gain step to current gain (at index)
+                    pid_gains[index] += gain_steps[index];
+
+                    Init(pid_gains[0], pid_gains[1], pid_gains[2]);
+
+                    step_index = 1;
+                }
+
+                //Step 1 for each index
+                if(1 == step_index)
+                {
+                    if(sqr_err < best_sqr_err)
                     {
-                        run_optimisation = false;
+                        //Update best error
+                        best_sqr_err = sqr_err;
 
-                        std::cout << "Optimisation Completed!"
-                                  << " Kp: "             << Kp
-                                  << ", Ki: "            << Ki
-                                  << ", Kd: "            << Kd
-                                  << ", Min AvgSqrCte: " << min_avg_sqr_cte
-                                  << std::endl;
+                        //Increase current gain step by 10%
+                        gain_steps[index] *= 1.1;
+
+                        //Move on to the next PID gain
+                        index = (index + 1) % 3;
+                        step_index = 0;
+
+                        if(0 == index)
+                        {   //If return back to PID gain index 0, increase iterator
+                            ++iter;
+                            std::cout << "Optimisation iteration " << iter << ", Best SqrErr: " << best_sqr_err << std::endl;
+                        }
                     }
                     else
                     {
-                        std::cout << " -- Updated Min Avg Sqr Cte: " << min_avg_sqr_cte << std::endl;
-                        std::cout << " -- Getting better. Continuing optimisation!" << std::endl;
-                        //@TODO:
+                        //Go back two steps for current gain
+                        pid_gains[index] -= 2.0 * gain_steps[index];
+
+                        Init(pid_gains[0], pid_gains[1], pid_gains[2]);
+
+                        step_index = 2;
                     }
                 }
-                else
+
+                //Step 2 (if required) for each index
+                if(2 == step_index)
                 {
-                    std::cout << "Getting worse. Continuing optimisation!" << std::endl;
-                    //@TODO:
+                    if(sqr_err < best_sqr_err)
+                    {
+                        //Update best error
+                        best_sqr_err = sqr_err;
+
+                        //Increase current gain step by 10%
+                        gain_steps[index] *= 1.1;
+                    }
+                    else
+                    {
+                        //Return current gain to the original value
+                        pid_gains[index] += gain_steps[index];
+
+                        //Decrease current gain step by 10%
+                        gain_steps[index] *= 0.9;
+                    }
+
+                    //Move on to the next PID gain
+                    index = (index + 1) % 3;
+                    step_index = 0;
+
+                    if(0 == index)
+                    {   //If return back to PID gain index 0, increase iterator
+                        ++iter;
+                        std::cout << "Optimisation iteration " << iter << ", Best SqrErr: " << best_sqr_err << std::endl;
+                    }
                 }
             }
+            else
+            {
+                run_optimisation = false;
 
-            // Just restart the whole run again for now
-            Init(pid_gains[0], pid_gains[1], pid_gains[2]);
+                std::cout << "Optimisation Completed!"
+                          << " Kp: "          << pid_gains[0]
+                          << ", Ki: "         << pid_gains[1]
+                          << ", Kd: "         << pid_gains[2]
+                          << ", BestSqrErr: " << best_sqr_err
+                          << std::endl;
+            }
         }
-        //Otherwise keep running for the current epoch
     }
 }

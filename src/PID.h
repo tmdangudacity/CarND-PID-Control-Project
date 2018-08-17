@@ -25,9 +25,9 @@ class PID
         /*
          * Initialize parameter optimisation
          */
-        bool InitOptimisation(double init_params[],
-                              double init_param_steps[],
-                              double in_sqr_cte_limit,
+        bool InitOptimisation(double init_pid_gains[],
+                              double init_gain_steps[],
+                              double in_gain_step_tol,
                               unsigned int in_max_run_counter);
 
         /*
@@ -42,6 +42,7 @@ class PID
         /*
          * Errors
          */
+
         double p_error;
         double i_error;
         double d_error;
@@ -63,11 +64,11 @@ class PID
         bool run_optimisation;
         double pid_gains[3];
         double gain_steps[3];
-        double sqr_cte_limit;
+        double gain_step_tol;
         unsigned int max_run_counter;
 
-        double avg_sqr_cte;
-        double min_avg_sqr_cte;
+        double sqr_err;
+        double best_sqr_err;
         unsigned int run_counter;
 
         void RunOptimisation();
