@@ -35,14 +35,21 @@ int main()
   PID pid;
 
   //Initialize optimisation
-  double gains[] = {3.1,   1.8,   0.1};
-  double steps[] = {0.05, 0.05, 0.005};
-  double cte2_limit     = 0.02;  //~ average cross track +-14cm.
-  unsigned int max_runs = 1200;
-  pid.InitOptimisation(gains, steps, cte2_limit, max_runs);
+  //double gains[] = {3.1,   1.8,   0.1};
+  //double steps[] = {0.05, 0.05, 0.005};
+  
+  /*
+  double gains[] = {3.75,   1.8,   0.2};
+  double steps[] = {0.5, 0.5, 0.05};
+  double tolerance = 0.02;
+  unsigned int max_runs = 1125;
+  pid.InitOptimisation(gains, steps, tolerance, max_runs);
+  */
 
   //Initialize PID controller
   //pid.Init(3.1, 1.8, 0.1);
+  //pid.Init(2.0, 1.8, 0.05);
+  pid.Init(255, 30, 2.35);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -69,24 +76,26 @@ int main()
           double steer_value = 0.0;
           if(speed > 0.0)
           {
-              steer_value = pid.UpdateError(cte) / speed;
+              steer_value = pid.UpdateError(cte) / (speed * speed);
 
               if(steer_value >  1.0) steer_value =  1.0;
               if(steer_value < -1.0) steer_value = -1.0;
           }
 
           // DEBUG
+          /*
           std::cout << " -- Cte "             << cte
                     << ", Speed: "            << speed
                     << ", Last steer angle: " << angle
                     << ", Steer demand: "     << steer_value
                     << std::endl;
+          */
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = 0.3;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
-          std::cout << msg << std::endl;
+          //std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
         }
       } else {

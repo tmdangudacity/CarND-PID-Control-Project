@@ -171,19 +171,22 @@ double PID::UpdateError(double cte)
 
     double pid_output = -( (Kp * p_error) + (Ki * i_error) + (Kd * d_error) );
 
-    std::cout << " -- dT: "         << dt
-              << ", avg_dT: "       << avg_dt
-              << ", Kp: "           << Kp
-              << ", Ki: "           << Ki
-              << ", Kd: "           << Kd
-              << ", Perr: "         << p_error
-              << ", Ierr: "         << i_error
-              << ", Derr: "         << d_error
-              << ", PID: "          << pid_output
-              << ", Optimisation: " << (run_optimisation ? "ON":"OFF")
-              << ", SqrError: "     << sqr_err
-              << ", Counter: "      << run_counter
-              << std::endl;
+    if(!run_optimisation)
+    {
+        std::cout << " -- dT: "         << dt
+                  << ", avg_dT: "       << avg_dt
+                  << ", Kp: "           << Kp
+                  << ", Ki: "           << Ki
+                  << ", Kd: "           << Kd
+                  << ", Perr: "         << p_error
+                  << ", Ierr: "         << i_error
+                  << ", Derr: "         << d_error
+                  << ", PID: "          << pid_output
+                  << ", Optimisation: " << (run_optimisation ? "ON":"OFF")
+                  << ", SqrError: "     << sqr_err
+                  << ", Counter: "      << run_counter
+                  << std::endl;
+    }
 
     last_cte = cte;
     last_clock_ticks = clock_ticks;
@@ -207,7 +210,7 @@ void PID::RunOptimisation()
     if(run_optimisation)
     {
         //One lap completed
-        if(run_counter == max_run_counter)
+        if(run_counter >= max_run_counter)
         {
             if( gain_step_tol < (gain_steps[0] + gain_steps[1] + gain_steps[2]) )
             {
@@ -216,23 +219,26 @@ void PID::RunOptimisation()
                     //Set best error the first time
                     best_sqr_err = sqr_err;
 
-                    //At iteration 0
-                    std::cout << "Optimisation iteration " << iter << ", Best SqrErr: " << best_sqr_err << std::endl;
-                }
+                    //First run
+                    std::cout << " - Optimisation, First run"
+                              << ", Kp: "          << pid_gains[0]
+                              << ", Ki: "          << pid_gains[1]
+                              << ", Kd: "          << pid_gains[2]
+                              << ", Best SqrErr: " << best_sqr_err
+                              << std::endl;
 
-                //Step 0 for each index
-                if(0 == step_index)
-                {
-                    //Add gain step to current gain (at index)
+                    //Add gain step to the gain at index 0
                     pid_gains[index] += gain_steps[index];
 
-                    Init(pid_gains[0], pid_gains[1], pid_gains[2]);
+                    std::cout << " -- Step " << step_index
+                              << ", Gain["   << index << "] = " << pid_gains[index]
+                              << ", Step["   << index << "] = " << gain_steps[index]
+                              << std::endl;
 
+                    Init(pid_gains[0], pid_gains[1], pid_gains[2]);
                     step_index = 1;
                 }
-
-                //Step 1 for each index
-                if(1 == step_index)
+                else if(1 == step_index) //Step 1
                 {
                     if(sqr_err < best_sqr_err)
                     {
@@ -242,29 +248,61 @@ void PID::RunOptimisation()
                         //Increase current gain step by 10%
                         gain_steps[index] *= 1.1;
 
+                        unsigned int temp_index = index;
+
                         //Move on to the next PID gain
                         index = (index + 1) % 3;
-                        step_index = 0;
+
+                        std::cout << " -- Step "                   << step_index
+                                  << ", Index: "                   << temp_index
+                                  << ", SqrErr (better): "         << best_sqr_err
+                                  << ", Keep Gain["                << temp_index
+                                  << "] at: "                      << pid_gains[temp_index]
+                                  << ", Increased Step["           << temp_index
+                                  << "] to: "                      << gain_steps[temp_index]
+                                  << ", Move to Next Gain index: " << index
+                                  << std::endl;
 
                         if(0 == index)
                         {   //If return back to PID gain index 0, increase iterator
+                            std::cout << " - Optimisation"
+                                      << " Iteration: "    << iter
+                                      << ", Kp: "          << pid_gains[0]
+                                      << ", Ki: "          << pid_gains[1]
+                                      << ", Kd: "          << pid_gains[2]
+                                      << ", Best SqrErr: " << best_sqr_err
+                                      << std::endl;
                             ++iter;
-                            std::cout << "Optimisation iteration " << iter << ", Best SqrErr: " << best_sqr_err << std::endl;
                         }
+
+                        //Add gain step to the gain at next index
+                        pid_gains[index] += gain_steps[index];
+
+                        std::cout << " -- Step " << step_index
+                                  << ", Gain["   << index << "] = " << pid_gains[index]
+                                  << ", Step["   << index << "] = " << gain_steps[index]
+                                << std::endl;
+
+                        Init(pid_gains[0], pid_gains[1], pid_gains[2]);
+                        step_index = 1;
                     }
                     else
                     {
                         //Go back two steps for current gain
                         pid_gains[index] -= 2.0 * gain_steps[index];
 
-                        Init(pid_gains[0], pid_gains[1], pid_gains[2]);
+                        std::cout << " -- Step "               << step_index
+                                  << ", Index: "               << index
+                                  << ", SqrErr (not better): " << sqr_err
+                                  << ", Decreased Gain["       << index
+                                  << "] to: "                  << pid_gains[index]
+                                  << std::endl;
 
+                        Init(pid_gains[0], pid_gains[1], pid_gains[2]);
                         step_index = 2;
                     }
                 }
-
-                //Step 2 (if required) for each index
-                if(2 == step_index)
+                else if(2 == step_index) //Step 2
                 {
                     if(sqr_err < best_sqr_err)
                     {
@@ -273,6 +311,14 @@ void PID::RunOptimisation()
 
                         //Increase current gain step by 10%
                         gain_steps[index] *= 1.1;
+
+                        std::cout << " -- Step "           << step_index
+                                  << ", Index: "           << index
+                                  << ", SqrErr (better): " << sqr_err
+                                  << ", Keep Gain["        << index
+                                  << "] at: "              << pid_gains[index]
+                                  << ", Increased Step["   << index
+                                  << "] to: "              << gain_steps[index];
                     }
                     else
                     {
@@ -281,24 +327,49 @@ void PID::RunOptimisation()
 
                         //Decrease current gain step by 10%
                         gain_steps[index] *= 0.9;
+
+                        std::cout << " -- Step "               << step_index
+                                  << ", Index: "               << index
+                                  << ", SqrErr (not better): " << sqr_err
+                                  << ", Set Gain["             << index
+                                  << "] back to "              << pid_gains[index]
+                                  << ", Reduced Step["         << index
+                                  << "] to: "                  << gain_steps[index];
                     }
 
                     //Move on to the next PID gain
                     index = (index + 1) % 3;
-                    step_index = 0;
+                    std::cout << ", Move to next Gain Index " << index << std::endl;
 
                     if(0 == index)
                     {   //If return back to PID gain index 0, increase iterator
+                        std::cout << " - Optimisation"
+                                  << ", New Iteration: " << iter
+                                  << ", Kp: "            << pid_gains[0]
+                                  << ", Ki: "            << pid_gains[1]
+                                  << ", Kd: "            << pid_gains[2]
+                                  << ", Best SqrErr: "   << best_sqr_err
+                                  << std::endl;
                         ++iter;
-                        std::cout << "Optimisation iteration " << iter << ", Best SqrErr: " << best_sqr_err << std::endl;
                     }
+
+                    //Add gain step to the gain at next index
+                    pid_gains[index] += gain_steps[index];
+
+                    std::cout << " -- Step " << step_index
+                              << ", Gain["   << index << "] = " << pid_gains[index]
+                              << ", Step["   << index << "] = " << gain_steps[index]
+                              << std::endl;
+
+                    Init(pid_gains[0], pid_gains[1], pid_gains[2]);
+                    step_index = 1;
                 }
             }
             else
             {
                 run_optimisation = false;
 
-                std::cout << "Optimisation Completed!"
+                std::cout << " - Optimisation Completed!"
                           << " Kp: "          << pid_gains[0]
                           << ", Ki: "         << pid_gains[1]
                           << ", Kd: "         << pid_gains[2]
