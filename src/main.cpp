@@ -34,22 +34,17 @@ int main()
 
   PID pid;
 
-  //Initialize optimisation
-  //double gains[] = {3.1,   1.8,   0.1};
-  //double steps[] = {0.05, 0.05, 0.005};
-  
   /*
-  double gains[] = {3.75,   1.8,   0.2};
-  double steps[] = {0.5, 0.5, 0.05};
-  double tolerance = 0.02;
+  //Initialize optimisation
+  double gains[] = {250.0, 25.0, 2.5};
+  double steps[] = {20.0,   5.0, 1.0};
+  double tolerance = 1.0;
   unsigned int max_runs = 1125;
   pid.InitOptimisation(gains, steps, tolerance, max_runs);
   */
 
-  //Initialize PID controller
-  //pid.Init(3.1, 1.8, 0.1);
-  //pid.Init(2.0, 1.8, 0.05);
-  pid.Init(255, 30, 2.35);
+  //Initialize PID controller with result of optimisation
+  pid.Init(213.962, 33.0595, 2.5);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -65,7 +60,8 @@ int main()
           // j[1] is the data JSON object
           double cte = std::stod(j[1]["cte"].get<std::string>());
           double speed = std::stod(j[1]["speed"].get<std::string>());
-          double angle = std::stod(j[1]["steering_angle"].get<std::string>());
+
+          //double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           /*
           * Calcuate steering value here, remember the steering value is
           * [-1, 1].
@@ -74,22 +70,24 @@ int main()
           */
 
           double steer_value = 0.0;
-          if(speed > 0.0)
-          {
-              steer_value = pid.UpdateError(cte) / (speed * speed);
+          double temp_speed = speed;
+          const double MIN_TUNED_SPEED = 10.0;
 
-              if(steer_value >  1.0) steer_value =  1.0;
-              if(steer_value < -1.0) steer_value = -1.0;
+          if(temp_speed < MIN_TUNED_SPEED)
+          {
+              temp_speed = MIN_TUNED_SPEED;
           }
 
-          // DEBUG
-          /*
-          std::cout << " -- Cte "             << cte
-                    << ", Speed: "            << speed
-                    << ", Last steer angle: " << angle
-                    << ", Steer demand: "     << steer_value
-                    << std::endl;
-          */
+          steer_value = pid.UpdateError(cte) / (temp_speed * temp_speed);
+
+          if(steer_value >  1.0)
+          {
+              steer_value =  1.0;
+          }
+          else if(steer_value < -1.0)
+          {
+              steer_value = -1.0;
+          }
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;

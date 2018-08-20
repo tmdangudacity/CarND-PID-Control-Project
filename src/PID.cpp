@@ -56,7 +56,7 @@ bool PID::Init(double in_Kp, double in_Ki, double in_Kd)
             gain_set = true;
         }
 
-        std::cout << "PID Gains set to"
+        std::cout << " -- PID Gains set to"
                   << ": Kp: " << Kp
                   << ", Ki: " << Ki
                   << ", Kd: " << Kd
@@ -148,9 +148,9 @@ double PID::UpdateError(double cte)
         }
         else
         {
-            std::cout << "ERROR! Current clock_ticks: " << clock_ticks
-                      << " < Last clock_ticks: "        << last_clock_ticks
-                      << ", NOT update error terms!"  << std::endl;
+            std::cout << " -- ERROR! Current clock_ticks: " << clock_ticks
+                      << " < Last clock_ticks: "            << last_clock_ticks
+                      << ", NOT update error terms!"        << std::endl;
         }
     }
     else
@@ -158,11 +158,11 @@ double PID::UpdateError(double cte)
         if(gain_set)
         {
             initialised = true;
-            std::cout << "PID initialised!" << std::endl;
+            std::cout << " -- PID initialised!" << std::endl;
         }
         else
         {
-            std::cout << "Error! PID Gains not set yet!" << std::endl;
+            std::cout << " -- Error! PID Gains not set yet!" << std::endl;
         }
     }
 
@@ -205,22 +205,32 @@ void PID::RunOptimisation()
 {
     static unsigned int iter  = 0;
     static unsigned int index = 0;
-    static unsigned int step_index = 0;
+    static unsigned int step_index  = 0;
+    static unsigned int lap_counter = 0;
 
     if(run_optimisation)
     {
         //One lap completed
         if(run_counter >= max_run_counter)
         {
-            if( gain_step_tol < (gain_steps[0] + gain_steps[1] + gain_steps[2]) )
+            double total_gain_steps = gain_steps[0] + gain_steps[1] + gain_steps[2];
+
+            std::cout << " -- Lap number: "     << (++lap_counter)
+                      << ", Total gain steps: " << total_gain_steps
+                      << ", Run counter: "      << run_counter
+                      << ", Max.run counter: "  << max_run_counter
+                      << ", SqrError: "         << sqr_err
+                      << std::endl;
+
+            if(total_gain_steps > gain_step_tol)
             {
-                if(-1.0 == best_sqr_err)
+                if(-1.0 == best_sqr_err) //First run
                 {
                     //Set best error the first time
                     best_sqr_err = sqr_err;
 
                     //First run
-                    std::cout << " - Optimisation, First run"
+                    std::cout << "Optimisation, First run"
                               << ", Kp: "          << pid_gains[0]
                               << ", Ki: "          << pid_gains[1]
                               << ", Kd: "          << pid_gains[2]
@@ -265,7 +275,7 @@ void PID::RunOptimisation()
 
                         if(0 == index)
                         {   //If return back to PID gain index 0, increase iterator
-                            std::cout << " - Optimisation"
+                            std::cout << "Optimisation"
                                       << " Iteration: "    << iter
                                       << ", Kp: "          << pid_gains[0]
                                       << ", Ki: "          << pid_gains[1]
@@ -343,7 +353,7 @@ void PID::RunOptimisation()
 
                     if(0 == index)
                     {   //If return back to PID gain index 0, increase iterator
-                        std::cout << " - Optimisation"
+                        std::cout << "Optimisation"
                                   << ", New Iteration: " << iter
                                   << ", Kp: "            << pid_gains[0]
                                   << ", Ki: "            << pid_gains[1]
@@ -369,7 +379,7 @@ void PID::RunOptimisation()
             {
                 run_optimisation = false;
 
-                std::cout << " - Optimisation Completed!"
+                std::cout << "Optimisation Completed!"
                           << " Kp: "          << pid_gains[0]
                           << ", Ki: "         << pid_gains[1]
                           << ", Kd: "         << pid_gains[2]

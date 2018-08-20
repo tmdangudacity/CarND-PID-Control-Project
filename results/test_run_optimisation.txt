@@ -1,0 +1,507 @@
+Optimisation, PID Gains (250, 25, 2.5), Gain Steps (20, 5, 1), Gain Step Tolerance: 1, MaxRunCounter: 1125
+ -- PID Gains set to: Kp: 250, Ki: 25, Kd: 2.5
+Listening to port 4567
+Connected!!!
+ -- PID initialised!
+ -- Lap number: 1, Total gain steps: 26, Run counter: 1125, Max.run counter: 1125, SqrError: 0.300405
+Optimisation, First run, Kp: 250, Ki: 25, Kd: 2.5, Best SqrErr: 0.300405
+ -- Step 0, Gain[0] = 270, Step[0] = 20
+ -- PID Gains set to: Kp: 270, Ki: 25, Kd: 2.5
+ -- Lap number: 2, Total gain steps: 26, Run counter: 1125, Max.run counter: 1125, SqrError: 0.367186
+ -- Step 1, Index: 0, SqrErr (not better): 0.367186, Decreased Gain[0] to: 230
+ -- PID Gains set to: Kp: 230, Ki: 25, Kd: 2.5
+ -- Lap number: 3, Total gain steps: 26, Run counter: 1125, Max.run counter: 1125, SqrError: 0.291074
+ -- Step 2, Index: 0, SqrErr (better): 0.291074, Keep Gain[0] at: 230, Increased Step[0] to: 22, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 30, Step[1] = 5
+ -- PID Gains set to: Kp: 230, Ki: 30, Kd: 2.5
+ -- Lap number: 4, Total gain steps: 28, Run counter: 1125, Max.run counter: 1125, SqrError: 0.31461
+ -- Step 1, Index: 1, SqrErr (not better): 0.31461, Decreased Gain[1] to: 20
+ -- PID Gains set to: Kp: 230, Ki: 20, Kd: 2.5
+ -- Lap number: 5, Total gain steps: 28, Run counter: 1125, Max.run counter: 1125, SqrError: 0.33215
+ -- Step 2, Index: 1, SqrErr (not better): 0.33215, Set Gain[1] back to 25, Reduced Step[1] to: 4.5, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 3.5, Step[2] = 1
+ -- PID Gains set to: Kp: 230, Ki: 25, Kd: 3.5
+ -- Lap number: 6, Total gain steps: 27.5, Run counter: 1125, Max.run counter: 1125, SqrError: 0.30225
+ -- Step 1, Index: 2, SqrErr (not better): 0.30225, Decreased Gain[2] to: 1.5
+ -- PID Gains set to: Kp: 230, Ki: 25, Kd: 1.5
+ -- Lap number: 7, Total gain steps: 27.5, Run counter: 1125, Max.run counter: 1125, SqrError: 0.866855
+ -- Step 2, Index: 2, SqrErr (not better): 0.866855, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.9, Move to next Gain Index 0
+Optimisation, New Iteration: 0, Kp: 230, Ki: 25, Kd: 2.5, Best SqrErr: 0.291074
+ -- Step 2, Gain[0] = 252, Step[0] = 22
+ -- PID Gains set to: Kp: 252, Ki: 25, Kd: 2.5
+ -- Lap number: 8, Total gain steps: 27.4, Run counter: 1125, Max.run counter: 1125, SqrError: 0.332572
+ -- Step 1, Index: 0, SqrErr (not better): 0.332572, Decreased Gain[0] to: 208
+ -- PID Gains set to: Kp: 208, Ki: 25, Kd: 2.5
+ -- Lap number: 9, Total gain steps: 27.4, Run counter: 1125, Max.run counter: 1125, SqrError: 0.357929
+ -- Step 2, Index: 0, SqrErr (not better): 0.357929, Set Gain[0] back to 230, Reduced Step[0] to: 19.8, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 29.5, Step[1] = 4.5
+ -- PID Gains set to: Kp: 230, Ki: 29.5, Kd: 2.5
+ -- Lap number: 10, Total gain steps: 25.2, Run counter: 1125, Max.run counter: 1125, SqrError: 0.337465
+ -- Step 1, Index: 1, SqrErr (not better): 0.337465, Decreased Gain[1] to: 20.5
+ -- PID Gains set to: Kp: 230, Ki: 20.5, Kd: 2.5
+ -- Lap number: 11, Total gain steps: 25.2, Run counter: 1125, Max.run counter: 1125, SqrError: 0.386573
+ -- Step 2, Index: 1, SqrErr (not better): 0.386573, Set Gain[1] back to 25, Reduced Step[1] to: 4.05, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 3.4, Step[2] = 0.9
+ -- PID Gains set to: Kp: 230, Ki: 25, Kd: 3.4
+ -- Lap number: 12, Total gain steps: 24.75, Run counter: 1125, Max.run counter: 1125, SqrError: 0.348823
+ -- Step 1, Index: 2, SqrErr (not better): 0.348823, Decreased Gain[2] to: 1.6
+ -- PID Gains set to: Kp: 230, Ki: 25, Kd: 1.6
+ -- Lap number: 13, Total gain steps: 24.75, Run counter: 1125, Max.run counter: 1125, SqrError: 0.597132
+ -- Step 2, Index: 2, SqrErr (not better): 0.597132, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.81, Move to next Gain Index 0
+Optimisation, New Iteration: 1, Kp: 230, Ki: 25, Kd: 2.5, Best SqrErr: 0.291074
+ -- Step 2, Gain[0] = 249.8, Step[0] = 19.8
+ -- PID Gains set to: Kp: 249.8, Ki: 25, Kd: 2.5
+ -- Lap number: 14, Total gain steps: 24.66, Run counter: 1125, Max.run counter: 1125, SqrError: 0.312561
+ -- Step 1, Index: 0, SqrErr (not better): 0.312561, Decreased Gain[0] to: 210.2
+ -- PID Gains set to: Kp: 210.2, Ki: 25, Kd: 2.5
+ -- Lap number: 15, Total gain steps: 24.66, Run counter: 1125, Max.run counter: 1125, SqrError: 0.313314
+ -- Step 2, Index: 0, SqrErr (not better): 0.313314, Set Gain[0] back to 230, Reduced Step[0] to: 17.82, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 29.05, Step[1] = 4.05
+ -- PID Gains set to: Kp: 230, Ki: 29.05, Kd: 2.5
+ -- Lap number: 16, Total gain steps: 22.68, Run counter: 1125, Max.run counter: 1125, SqrError: 0.288399
+ -- Step 1, Index: 1, SqrErr (better): 0.288399, Keep Gain[1] at: 29.05, Increased Step[1] to: 4.455, Move to Next Gain index: 2
+ -- Step 1, Gain[2] = 3.31, Step[2] = 0.81
+ -- PID Gains set to: Kp: 230, Ki: 29.05, Kd: 3.31
+ -- Lap number: 17, Total gain steps: 23.085, Run counter: 1125, Max.run counter: 1125, SqrError: 0.323777
+ -- Step 1, Index: 2, SqrErr (not better): 0.323777, Decreased Gain[2] to: 1.69
+ -- PID Gains set to: Kp: 230, Ki: 29.05, Kd: 1.69
+ -- Lap number: 18, Total gain steps: 23.085, Run counter: 1125, Max.run counter: 1125, SqrError: 0.656928
+ -- Step 2, Index: 2, SqrErr (not better): 0.656928, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.729, Move to next Gain Index 0
+Optimisation, New Iteration: 2, Kp: 230, Ki: 29.05, Kd: 2.5, Best SqrErr: 0.288399
+ -- Step 2, Gain[0] = 247.82, Step[0] = 17.82
+ -- PID Gains set to: Kp: 247.82, Ki: 29.05, Kd: 2.5
+ -- Lap number: 19, Total gain steps: 23.004, Run counter: 1125, Max.run counter: 1125, SqrError: 0.295473
+ -- Step 1, Index: 0, SqrErr (not better): 0.295473, Decreased Gain[0] to: 212.18
+ -- PID Gains set to: Kp: 212.18, Ki: 29.05, Kd: 2.5
+ -- Lap number: 20, Total gain steps: 23.004, Run counter: 1125, Max.run counter: 1125, SqrError: 0.366064
+ -- Step 2, Index: 0, SqrErr (not better): 0.366064, Set Gain[0] back to 230, Reduced Step[0] to: 16.038, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 33.505, Step[1] = 4.455
+ -- PID Gains set to: Kp: 230, Ki: 33.505, Kd: 2.5
+ -- Lap number: 21, Total gain steps: 21.222, Run counter: 1125, Max.run counter: 1125, SqrError: 0.334602
+ -- Step 1, Index: 1, SqrErr (not better): 0.334602, Decreased Gain[1] to: 24.595
+ -- PID Gains set to: Kp: 230, Ki: 24.595, Kd: 2.5
+ -- Lap number: 22, Total gain steps: 21.222, Run counter: 1125, Max.run counter: 1125, SqrError: 0.339676
+ -- Step 2, Index: 1, SqrErr (not better): 0.339676, Set Gain[1] back to 29.05, Reduced Step[1] to: 4.0095, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 3.229, Step[2] = 0.729
+ -- PID Gains set to: Kp: 230, Ki: 29.05, Kd: 3.229
+ -- Lap number: 23, Total gain steps: 20.7765, Run counter: 1125, Max.run counter: 1125, SqrError: 0.464544
+ -- Step 1, Index: 2, SqrErr (not better): 0.464544, Decreased Gain[2] to: 1.771
+ -- PID Gains set to: Kp: 230, Ki: 29.05, Kd: 1.771
+ -- Lap number: 24, Total gain steps: 20.7765, Run counter: 1125, Max.run counter: 1125, SqrError: 0.448471
+ -- Step 2, Index: 2, SqrErr (not better): 0.448471, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.6561, Move to next Gain Index 0
+Optimisation, New Iteration: 3, Kp: 230, Ki: 29.05, Kd: 2.5, Best SqrErr: 0.288399
+ -- Step 2, Gain[0] = 246.038, Step[0] = 16.038
+ -- PID Gains set to: Kp: 246.038, Ki: 29.05, Kd: 2.5
+ -- Lap number: 25, Total gain steps: 20.7036, Run counter: 1125, Max.run counter: 1125, SqrError: 0.31204
+ -- Step 1, Index: 0, SqrErr (not better): 0.31204, Decreased Gain[0] to: 213.962
+ -- PID Gains set to: Kp: 213.962, Ki: 29.05, Kd: 2.5
+ -- Lap number: 26, Total gain steps: 20.7036, Run counter: 1125, Max.run counter: 1125, SqrError: 0.285182
+ -- Step 2, Index: 0, SqrErr (better): 0.285182, Keep Gain[0] at: 213.962, Increased Step[0] to: 17.6418, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 33.0595, Step[1] = 4.0095
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 27, Total gain steps: 22.3074, Run counter: 1125, Max.run counter: 1125, SqrError: 0.279354
+ -- Step 1, Index: 1, SqrErr (better): 0.279354, Keep Gain[1] at: 33.0595, Increased Step[1] to: 4.41045, Move to Next Gain index: 2
+ -- Step 1, Gain[2] = 3.1561, Step[2] = 0.6561
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 3.1561
+ -- Lap number: 28, Total gain steps: 22.7084, Run counter: 1125, Max.run counter: 1125, SqrError: 0.321202
+ -- Step 1, Index: 2, SqrErr (not better): 0.321202, Decreased Gain[2] to: 1.8439
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 1.8439
+ -- Lap number: 29, Total gain steps: 22.7084, Run counter: 1125, Max.run counter: 1125, SqrError: 0.365104
+ -- Step 2, Index: 2, SqrErr (not better): 0.365104, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.59049, Move to next Gain Index 0
+Optimisation, New Iteration: 4, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 231.604, Step[0] = 17.6418
+ -- PID Gains set to: Kp: 231.604, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 30, Total gain steps: 22.6427, Run counter: 1125, Max.run counter: 1125, SqrError: 0.304246
+ -- Step 1, Index: 0, SqrErr (not better): 0.304246, Decreased Gain[0] to: 196.32
+ -- PID Gains set to: Kp: 196.32, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 31, Total gain steps: 22.6427, Run counter: 1125, Max.run counter: 1125, SqrError: 0.385665
+ -- Step 2, Index: 0, SqrErr (not better): 0.385665, Set Gain[0] back to 213.962, Reduced Step[0] to: 15.8776, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 37.47, Step[1] = 4.41045
+ -- PID Gains set to: Kp: 213.962, Ki: 37.47, Kd: 2.5
+ -- Lap number: 32, Total gain steps: 20.8786, Run counter: 1125, Max.run counter: 1125, SqrError: 0.374193
+ -- Step 1, Index: 1, SqrErr (not better): 0.374193, Decreased Gain[1] to: 28.6491
+ -- PID Gains set to: Kp: 213.962, Ki: 28.6491, Kd: 2.5
+ -- Lap number: 33, Total gain steps: 20.8786, Run counter: 1125, Max.run counter: 1125, SqrError: 0.378746
+ -- Step 2, Index: 1, SqrErr (not better): 0.378746, Set Gain[1] back to 33.0595, Reduced Step[1] to: 3.96941, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 3.09049, Step[2] = 0.59049
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 3.09049
+ -- Lap number: 34, Total gain steps: 20.4375, Run counter: 1125, Max.run counter: 1125, SqrError: 0.28359
+ -- Step 1, Index: 2, SqrErr (not better): 0.28359, Decreased Gain[2] to: 1.90951
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 1.90951
+ -- Lap number: 35, Total gain steps: 20.4375, Run counter: 1125, Max.run counter: 1125, SqrError: 0.365241
+ -- Step 2, Index: 2, SqrErr (not better): 0.365241, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.531441, Move to next Gain Index 0
+Optimisation, New Iteration: 5, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 229.84, Step[0] = 15.8776
+ -- PID Gains set to: Kp: 229.84, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 36, Total gain steps: 20.3785, Run counter: 1125, Max.run counter: 1125, SqrError: 0.302768
+ -- Step 1, Index: 0, SqrErr (not better): 0.302768, Decreased Gain[0] to: 198.084
+ -- PID Gains set to: Kp: 198.084, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 37, Total gain steps: 20.3785, Run counter: 1125, Max.run counter: 1125, SqrError: 0.345026
+ -- Step 2, Index: 0, SqrErr (not better): 0.345026, Set Gain[0] back to 213.962, Reduced Step[0] to: 14.2899, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 37.0289, Step[1] = 3.96941
+ -- PID Gains set to: Kp: 213.962, Ki: 37.0289, Kd: 2.5
+ -- Lap number: 38, Total gain steps: 18.7907, Run counter: 1125, Max.run counter: 1125, SqrError: 0.320285
+ -- Step 1, Index: 1, SqrErr (not better): 0.320285, Decreased Gain[1] to: 29.0901
+ -- PID Gains set to: Kp: 213.962, Ki: 29.0901, Kd: 2.5
+ -- Lap number: 39, Total gain steps: 18.7907, Run counter: 1125, Max.run counter: 1125, SqrError: 0.334968
+ -- Step 2, Index: 1, SqrErr (not better): 0.334968, Set Gain[1] back to 33.0595, Reduced Step[1] to: 3.57246, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 3.03144, Step[2] = 0.531441
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 3.03144
+ -- Lap number: 40, Total gain steps: 18.3938, Run counter: 1125, Max.run counter: 1125, SqrError: 0.304145
+ -- Step 1, Index: 2, SqrErr (not better): 0.304145, Decreased Gain[2] to: 1.96856
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 1.96856
+ -- Lap number: 41, Total gain steps: 18.3938, Run counter: 1125, Max.run counter: 1125, SqrError: 0.372052
+ -- Step 2, Index: 2, SqrErr (not better): 0.372052, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.478297, Move to next Gain Index 0
+Optimisation, New Iteration: 6, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 228.252, Step[0] = 14.2899
+ -- PID Gains set to: Kp: 228.252, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 42, Total gain steps: 18.3406, Run counter: 1125, Max.run counter: 1125, SqrError: 0.344969
+ -- Step 1, Index: 0, SqrErr (not better): 0.344969, Decreased Gain[0] to: 199.672
+ -- PID Gains set to: Kp: 199.672, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 43, Total gain steps: 18.3406, Run counter: 1125, Max.run counter: 1125, SqrError: 0.392625
+ -- Step 2, Index: 0, SqrErr (not better): 0.392625, Set Gain[0] back to 213.962, Reduced Step[0] to: 12.8609, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 36.632, Step[1] = 3.57246
+ -- PID Gains set to: Kp: 213.962, Ki: 36.632, Kd: 2.5
+ -- Lap number: 44, Total gain steps: 16.9116, Run counter: 1125, Max.run counter: 1125, SqrError: 0.281949
+ -- Step 1, Index: 1, SqrErr (not better): 0.281949, Decreased Gain[1] to: 29.487
+ -- PID Gains set to: Kp: 213.962, Ki: 29.487, Kd: 2.5
+ -- Lap number: 45, Total gain steps: 16.9116, Run counter: 1125, Max.run counter: 1125, SqrError: 0.303245
+ -- Step 2, Index: 1, SqrErr (not better): 0.303245, Set Gain[1] back to 33.0595, Reduced Step[1] to: 3.21522, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.9783, Step[2] = 0.478297
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.9783
+ -- Lap number: 46, Total gain steps: 16.5544, Run counter: 1125, Max.run counter: 1125, SqrError: 0.304696
+ -- Step 1, Index: 2, SqrErr (not better): 0.304696, Decreased Gain[2] to: 2.0217
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.0217
+ -- Lap number: 47, Total gain steps: 16.5544, Run counter: 1125, Max.run counter: 1125, SqrError: 0.356464
+ -- Step 2, Index: 2, SqrErr (not better): 0.356464, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.430467, Move to next Gain Index 0
+Optimisation, New Iteration: 7, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 226.823, Step[0] = 12.8609
+ -- PID Gains set to: Kp: 226.823, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 48, Total gain steps: 16.5066, Run counter: 1125, Max.run counter: 1125, SqrError: 0.298827
+ -- Step 1, Index: 0, SqrErr (not better): 0.298827, Decreased Gain[0] to: 201.101
+ -- PID Gains set to: Kp: 201.101, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 49, Total gain steps: 16.5066, Run counter: 1125, Max.run counter: 1125, SqrError: 0.332791
+ -- Step 2, Index: 0, SqrErr (not better): 0.332791, Set Gain[0] back to 213.962, Reduced Step[0] to: 11.5748, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 36.2747, Step[1] = 3.21522
+ -- PID Gains set to: Kp: 213.962, Ki: 36.2747, Kd: 2.5
+ -- Lap number: 50, Total gain steps: 15.2205, Run counter: 1125, Max.run counter: 1125, SqrError: 0.357284
+ -- Step 1, Index: 1, SqrErr (not better): 0.357284, Decreased Gain[1] to: 29.8443
+ -- PID Gains set to: Kp: 213.962, Ki: 29.8443, Kd: 2.5
+ -- Lap number: 51, Total gain steps: 15.2205, Run counter: 1125, Max.run counter: 1125, SqrError: 0.337499
+ -- Step 2, Index: 1, SqrErr (not better): 0.337499, Set Gain[1] back to 33.0595, Reduced Step[1] to: 2.8937, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.93047, Step[2] = 0.430467
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.93047
+ -- Lap number: 52, Total gain steps: 14.8989, Run counter: 1125, Max.run counter: 1125, SqrError: 0.30552
+ -- Step 1, Index: 2, SqrErr (not better): 0.30552, Decreased Gain[2] to: 2.06953
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.06953
+ -- Lap number: 53, Total gain steps: 14.8989, Run counter: 1125, Max.run counter: 1125, SqrError: 0.414151
+ -- Step 2, Index: 2, SqrErr (not better): 0.414151, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.38742, Move to next Gain Index 0
+Optimisation, New Iteration: 8, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 225.537, Step[0] = 11.5748
+ -- PID Gains set to: Kp: 225.537, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 54, Total gain steps: 14.8559, Run counter: 1125, Max.run counter: 1125, SqrError: 0.306633
+ -- Step 1, Index: 0, SqrErr (not better): 0.306633, Decreased Gain[0] to: 202.387
+ -- PID Gains set to: Kp: 202.387, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 55, Total gain steps: 14.8559, Run counter: 1125, Max.run counter: 1125, SqrError: 0.309066
+ -- Step 2, Index: 0, SqrErr (not better): 0.309066, Set Gain[0] back to 213.962, Reduced Step[0] to: 10.4173, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 35.9532, Step[1] = 2.8937
+ -- PID Gains set to: Kp: 213.962, Ki: 35.9532, Kd: 2.5
+ -- Lap number: 56, Total gain steps: 13.6984, Run counter: 1125, Max.run counter: 1125, SqrError: 0.304071
+ -- Step 1, Index: 1, SqrErr (not better): 0.304071, Decreased Gain[1] to: 30.1658
+ -- PID Gains set to: Kp: 213.962, Ki: 30.1658, Kd: 2.5
+ -- Lap number: 57, Total gain steps: 13.6984, Run counter: 1125, Max.run counter: 1125, SqrError: 0.3317
+ -- Step 2, Index: 1, SqrErr (not better): 0.3317, Set Gain[1] back to 33.0595, Reduced Step[1] to: 2.60433, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.88742, Step[2] = 0.38742
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.88742
+ -- Lap number: 58, Total gain steps: 13.4091, Run counter: 1125, Max.run counter: 1125, SqrError: 0.301199
+ -- Step 1, Index: 2, SqrErr (not better): 0.301199, Decreased Gain[2] to: 2.11258
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.11258
+ -- Lap number: 59, Total gain steps: 13.4091, Run counter: 1125, Max.run counter: 1125, SqrError: 0.327904
+ -- Step 2, Index: 2, SqrErr (not better): 0.327904, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.348678, Move to next Gain Index 0
+Optimisation, New Iteration: 9, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 224.379, Step[0] = 10.4173
+ -- PID Gains set to: Kp: 224.379, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 60, Total gain steps: 13.3703, Run counter: 1125, Max.run counter: 1125, SqrError: 0.352066
+ -- Step 1, Index: 0, SqrErr (not better): 0.352066, Decreased Gain[0] to: 203.545
+ -- PID Gains set to: Kp: 203.545, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 61, Total gain steps: 13.3703, Run counter: 1125, Max.run counter: 1125, SqrError: 0.381159
+ -- Step 2, Index: 0, SqrErr (not better): 0.381159, Set Gain[0] back to 213.962, Reduced Step[0] to: 9.37558, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 35.6638, Step[1] = 2.60433
+ -- PID Gains set to: Kp: 213.962, Ki: 35.6638, Kd: 2.5
+ -- Lap number: 62, Total gain steps: 12.3286, Run counter: 1125, Max.run counter: 1125, SqrError: 0.378495
+ -- Step 1, Index: 1, SqrErr (not better): 0.378495, Decreased Gain[1] to: 30.4552
+ -- PID Gains set to: Kp: 213.962, Ki: 30.4552, Kd: 2.5
+ -- Lap number: 63, Total gain steps: 12.3286, Run counter: 1125, Max.run counter: 1125, SqrError: 0.341594
+ -- Step 2, Index: 1, SqrErr (not better): 0.341594, Set Gain[1] back to 33.0595, Reduced Step[1] to: 2.34389, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.84868, Step[2] = 0.348678
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.84868
+ -- Lap number: 64, Total gain steps: 12.0681, Run counter: 1125, Max.run counter: 1125, SqrError: 0.281871
+ -- Step 1, Index: 2, SqrErr (not better): 0.281871, Decreased Gain[2] to: 2.15132
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.15132
+ -- Lap number: 65, Total gain steps: 12.0681, Run counter: 1125, Max.run counter: 1125, SqrError: 0.315888
+ -- Step 2, Index: 2, SqrErr (not better): 0.315888, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.313811, Move to next Gain Index 0
+Optimisation, New Iteration: 10, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 223.338, Step[0] = 9.37558
+ -- PID Gains set to: Kp: 223.338, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 66, Total gain steps: 12.0333, Run counter: 1125, Max.run counter: 1125, SqrError: 0.317729
+ -- Step 1, Index: 0, SqrErr (not better): 0.317729, Decreased Gain[0] to: 204.586
+ -- PID Gains set to: Kp: 204.586, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 67, Total gain steps: 12.0333, Run counter: 1125, Max.run counter: 1125, SqrError: 0.326663
+ -- Step 2, Index: 0, SqrErr (not better): 0.326663, Set Gain[0] back to 213.962, Reduced Step[0] to: 8.43802, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 35.4034, Step[1] = 2.34389
+ -- PID Gains set to: Kp: 213.962, Ki: 35.4034, Kd: 2.5
+ -- Lap number: 68, Total gain steps: 11.0957, Run counter: 1125, Max.run counter: 1125, SqrError: 0.293798
+ -- Step 1, Index: 1, SqrErr (not better): 0.293798, Decreased Gain[1] to: 30.7156
+ -- PID Gains set to: Kp: 213.962, Ki: 30.7156, Kd: 2.5
+ -- Lap number: 69, Total gain steps: 11.0957, Run counter: 1125, Max.run counter: 1125, SqrError: 0.35657
+ -- Step 2, Index: 1, SqrErr (not better): 0.35657, Set Gain[1] back to 33.0595, Reduced Step[1] to: 2.1095, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.81381, Step[2] = 0.313811
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.81381
+ -- Lap number: 70, Total gain steps: 10.8613, Run counter: 1125, Max.run counter: 1125, SqrError: 0.315258
+ -- Step 1, Index: 2, SqrErr (not better): 0.315258, Decreased Gain[2] to: 2.18619
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.18619
+ -- Lap number: 71, Total gain steps: 10.8613, Run counter: 1125, Max.run counter: 1125, SqrError: 0.3707
+ -- Step 2, Index: 2, SqrErr (not better): 0.3707, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.28243, Move to next Gain Index 0
+Optimisation, New Iteration: 11, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 222.4, Step[0] = 8.43802
+ -- PID Gains set to: Kp: 222.4, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 72, Total gain steps: 10.83, Run counter: 1125, Max.run counter: 1125, SqrError: 0.382713
+ -- Step 1, Index: 0, SqrErr (not better): 0.382713, Decreased Gain[0] to: 205.524
+ -- PID Gains set to: Kp: 205.524, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 73, Total gain steps: 10.83, Run counter: 1125, Max.run counter: 1125, SqrError: 0.321203
+ -- Step 2, Index: 0, SqrErr (not better): 0.321203, Set Gain[0] back to 213.962, Reduced Step[0] to: 7.59422, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 35.169, Step[1] = 2.1095
+ -- PID Gains set to: Kp: 213.962, Ki: 35.169, Kd: 2.5
+ -- Lap number: 74, Total gain steps: 9.98615, Run counter: 1125, Max.run counter: 1125, SqrError: 0.316227
+ -- Step 1, Index: 1, SqrErr (not better): 0.316227, Decreased Gain[1] to: 30.95
+ -- PID Gains set to: Kp: 213.962, Ki: 30.95, Kd: 2.5
+ -- Lap number: 75, Total gain steps: 9.98615, Run counter: 1125, Max.run counter: 1125, SqrError: 0.316453
+ -- Step 2, Index: 1, SqrErr (not better): 0.316453, Set Gain[1] back to 33.0595, Reduced Step[1] to: 1.89855, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.78243, Step[2] = 0.28243
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.78243
+ -- Lap number: 76, Total gain steps: 9.7752, Run counter: 1125, Max.run counter: 1125, SqrError: 0.306611
+ -- Step 1, Index: 2, SqrErr (not better): 0.306611, Decreased Gain[2] to: 2.21757
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.21757
+ -- Lap number: 77, Total gain steps: 9.7752, Run counter: 1125, Max.run counter: 1125, SqrError: 0.34251
+ -- Step 2, Index: 2, SqrErr (not better): 0.34251, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.254187, Move to next Gain Index 0
+Optimisation, New Iteration: 12, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 221.556, Step[0] = 7.59422
+ -- PID Gains set to: Kp: 221.556, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 78, Total gain steps: 9.74696, Run counter: 1125, Max.run counter: 1125, SqrError: 0.308828
+ -- Step 1, Index: 0, SqrErr (not better): 0.308828, Decreased Gain[0] to: 206.368
+ -- PID Gains set to: Kp: 206.368, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 79, Total gain steps: 9.74696, Run counter: 1125, Max.run counter: 1125, SqrError: 0.374105
+ -- Step 2, Index: 0, SqrErr (not better): 0.374105, Set Gain[0] back to 213.962, Reduced Step[0] to: 6.83479, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 34.9581, Step[1] = 1.89855
+ -- PID Gains set to: Kp: 213.962, Ki: 34.9581, Kd: 2.5
+ -- Lap number: 80, Total gain steps: 8.98754, Run counter: 1125, Max.run counter: 1125, SqrError: 0.3727
+ -- Step 1, Index: 1, SqrErr (not better): 0.3727, Decreased Gain[1] to: 31.1609
+ -- PID Gains set to: Kp: 213.962, Ki: 31.1609, Kd: 2.5
+ -- Lap number: 81, Total gain steps: 8.98754, Run counter: 1125, Max.run counter: 1125, SqrError: 0.343837
+ -- Step 2, Index: 1, SqrErr (not better): 0.343837, Set Gain[1] back to 33.0595, Reduced Step[1] to: 1.7087, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.75419, Step[2] = 0.254187
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.75419
+ -- Lap number: 82, Total gain steps: 8.79768, Run counter: 1125, Max.run counter: 1125, SqrError: 0.351783
+ -- Step 1, Index: 2, SqrErr (not better): 0.351783, Decreased Gain[2] to: 2.24581
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.24581
+ -- Lap number: 83, Total gain steps: 8.79768, Run counter: 1125, Max.run counter: 1125, SqrError: 0.327666
+ -- Step 2, Index: 2, SqrErr (not better): 0.327666, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.228768, Move to next Gain Index 0
+Optimisation, New Iteration: 13, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 220.797, Step[0] = 6.83479
+ -- PID Gains set to: Kp: 220.797, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 84, Total gain steps: 8.77226, Run counter: 1125, Max.run counter: 1125, SqrError: 0.293842
+ -- Step 1, Index: 0, SqrErr (not better): 0.293842, Decreased Gain[0] to: 207.127
+ -- PID Gains set to: Kp: 207.127, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 85, Total gain steps: 8.77226, Run counter: 1125, Max.run counter: 1125, SqrError: 0.291545
+ -- Step 2, Index: 0, SqrErr (not better): 0.291545, Set Gain[0] back to 213.962, Reduced Step[0] to: 6.15132, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 34.7682, Step[1] = 1.7087
+ -- PID Gains set to: Kp: 213.962, Ki: 34.7682, Kd: 2.5
+ -- Lap number: 86, Total gain steps: 8.08878, Run counter: 1125, Max.run counter: 1125, SqrError: 0.31973
+ -- Step 1, Index: 1, SqrErr (not better): 0.31973, Decreased Gain[1] to: 31.3508
+ -- PID Gains set to: Kp: 213.962, Ki: 31.3508, Kd: 2.5
+ -- Lap number: 87, Total gain steps: 8.08878, Run counter: 1125, Max.run counter: 1125, SqrError: 0.331741
+ -- Step 2, Index: 1, SqrErr (not better): 0.331741, Set Gain[1] back to 33.0595, Reduced Step[1] to: 1.53783, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.72877, Step[2] = 0.228768
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.72877
+ -- Lap number: 88, Total gain steps: 7.91791, Run counter: 1125, Max.run counter: 1125, SqrError: 0.294812
+ -- Step 1, Index: 2, SqrErr (not better): 0.294812, Decreased Gain[2] to: 2.27123
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.27123
+ -- Lap number: 89, Total gain steps: 7.91791, Run counter: 1125, Max.run counter: 1125, SqrError: 0.373926
+ -- Step 2, Index: 2, SqrErr (not better): 0.373926, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.205891, Move to next Gain Index 0
+Optimisation, New Iteration: 14, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 220.113, Step[0] = 6.15132
+ -- PID Gains set to: Kp: 220.113, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 90, Total gain steps: 7.89504, Run counter: 1125, Max.run counter: 1125, SqrError: 0.331064
+ -- Step 1, Index: 0, SqrErr (not better): 0.331064, Decreased Gain[0] to: 207.811
+ -- PID Gains set to: Kp: 207.811, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 91, Total gain steps: 7.89504, Run counter: 1125, Max.run counter: 1125, SqrError: 0.358877
+ -- Step 2, Index: 0, SqrErr (not better): 0.358877, Set Gain[0] back to 213.962, Reduced Step[0] to: 5.53618, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 34.5973, Step[1] = 1.53783
+ -- PID Gains set to: Kp: 213.962, Ki: 34.5973, Kd: 2.5
+ -- Lap number: 92, Total gain steps: 7.2799, Run counter: 1125, Max.run counter: 1125, SqrError: 0.394175
+ -- Step 1, Index: 1, SqrErr (not better): 0.394175, Decreased Gain[1] to: 31.5217
+ -- PID Gains set to: Kp: 213.962, Ki: 31.5217, Kd: 2.5
+ -- Lap number: 93, Total gain steps: 7.2799, Run counter: 1125, Max.run counter: 1125, SqrError: 0.313317
+ -- Step 2, Index: 1, SqrErr (not better): 0.313317, Set Gain[1] back to 33.0595, Reduced Step[1] to: 1.38405, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.70589, Step[2] = 0.205891
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.70589
+ -- Lap number: 94, Total gain steps: 7.12612, Run counter: 1125, Max.run counter: 1125, SqrError: 0.280404
+ -- Step 1, Index: 2, SqrErr (not better): 0.280404, Decreased Gain[2] to: 2.29411
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.29411
+ -- Lap number: 95, Total gain steps: 7.12612, Run counter: 1125, Max.run counter: 1125, SqrError: 0.296358
+ -- Step 2, Index: 2, SqrErr (not better): 0.296358, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.185302, Move to next Gain Index 0
+Optimisation, New Iteration: 15, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 219.498, Step[0] = 5.53618
+ -- PID Gains set to: Kp: 219.498, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 96, Total gain steps: 7.10553, Run counter: 1125, Max.run counter: 1125, SqrError: 0.328058
+ -- Step 1, Index: 0, SqrErr (not better): 0.328058, Decreased Gain[0] to: 208.426
+ -- PID Gains set to: Kp: 208.426, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 97, Total gain steps: 7.10553, Run counter: 1125, Max.run counter: 1125, SqrError: 0.308919
+ -- Step 2, Index: 0, SqrErr (not better): 0.308919, Set Gain[0] back to 213.962, Reduced Step[0] to: 4.98257, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 34.4435, Step[1] = 1.38405
+ -- PID Gains set to: Kp: 213.962, Ki: 34.4435, Kd: 2.5
+ -- Lap number: 98, Total gain steps: 6.55191, Run counter: 1125, Max.run counter: 1125, SqrError: 0.301077
+ -- Step 1, Index: 1, SqrErr (not better): 0.301077, Decreased Gain[1] to: 31.6755
+ -- PID Gains set to: Kp: 213.962, Ki: 31.6755, Kd: 2.5
+ -- Lap number: 99, Total gain steps: 6.55191, Run counter: 1125, Max.run counter: 1125, SqrError: 0.353926
+ -- Step 2, Index: 1, SqrErr (not better): 0.353926, Set Gain[1] back to 33.0595, Reduced Step[1] to: 1.24564, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.6853, Step[2] = 0.185302
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.6853
+ -- Lap number: 100, Total gain steps: 6.41351, Run counter: 1125, Max.run counter: 1125, SqrError: 0.339228
+ -- Step 1, Index: 2, SqrErr (not better): 0.339228, Decreased Gain[2] to: 2.3147
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.3147
+ -- Lap number: 101, Total gain steps: 6.41351, Run counter: 1125, Max.run counter: 1125, SqrError: 0.355909
+ -- Step 2, Index: 2, SqrErr (not better): 0.355909, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.166772, Move to next Gain Index 0
+Optimisation, New Iteration: 16, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 218.945, Step[0] = 4.98257
+ -- PID Gains set to: Kp: 218.945, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 102, Total gain steps: 6.39498, Run counter: 1125, Max.run counter: 1125, SqrError: 0.334624
+ -- Step 1, Index: 0, SqrErr (not better): 0.334624, Decreased Gain[0] to: 208.979
+ -- PID Gains set to: Kp: 208.979, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 103, Total gain steps: 6.39498, Run counter: 1125, Max.run counter: 1125, SqrError: 0.333019
+ -- Step 2, Index: 0, SqrErr (not better): 0.333019, Set Gain[0] back to 213.962, Reduced Step[0] to: 4.48431, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 34.3051, Step[1] = 1.24564
+ -- PID Gains set to: Kp: 213.962, Ki: 34.3051, Kd: 2.5
+ -- Lap number: 104, Total gain steps: 5.89672, Run counter: 1125, Max.run counter: 1125, SqrError: 0.316119
+ -- Step 1, Index: 1, SqrErr (not better): 0.316119, Decreased Gain[1] to: 31.8139
+ -- PID Gains set to: Kp: 213.962, Ki: 31.8139, Kd: 2.5
+ -- Lap number: 105, Total gain steps: 5.89672, Run counter: 1125, Max.run counter: 1125, SqrError: 0.31898
+ -- Step 2, Index: 1, SqrErr (not better): 0.31898, Set Gain[1] back to 33.0595, Reduced Step[1] to: 1.12108, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.66677, Step[2] = 0.166772
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.66677
+ -- Lap number: 106, Total gain steps: 5.77216, Run counter: 1125, Max.run counter: 1125, SqrError: 0.327135
+ -- Step 1, Index: 2, SqrErr (not better): 0.327135, Decreased Gain[2] to: 2.33323
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.33323
+ -- Lap number: 107, Total gain steps: 5.77216, Run counter: 1125, Max.run counter: 1125, SqrError: 0.309443
+ -- Step 2, Index: 2, SqrErr (not better): 0.309443, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.150095, Move to next Gain Index 0
+Optimisation, New Iteration: 17, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 218.446, Step[0] = 4.48431
+ -- PID Gains set to: Kp: 218.446, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 108, Total gain steps: 5.75548, Run counter: 1125, Max.run counter: 1125, SqrError: 0.32382
+ -- Step 1, Index: 0, SqrErr (not better): 0.32382, Decreased Gain[0] to: 209.478
+ -- PID Gains set to: Kp: 209.478, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 109, Total gain steps: 5.75548, Run counter: 1125, Max.run counter: 1125, SqrError: 0.358118
+ -- Step 2, Index: 0, SqrErr (not better): 0.358118, Set Gain[0] back to 213.962, Reduced Step[0] to: 4.03588, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 34.1806, Step[1] = 1.12108
+ -- PID Gains set to: Kp: 213.962, Ki: 34.1806, Kd: 2.5
+ -- Lap number: 110, Total gain steps: 5.30705, Run counter: 1125, Max.run counter: 1125, SqrError: 0.373033
+ -- Step 1, Index: 1, SqrErr (not better): 0.373033, Decreased Gain[1] to: 31.9384
+ -- PID Gains set to: Kp: 213.962, Ki: 31.9384, Kd: 2.5
+ -- Lap number: 111, Total gain steps: 5.30705, Run counter: 1125, Max.run counter: 1125, SqrError: 0.368511
+ -- Step 2, Index: 1, SqrErr (not better): 0.368511, Set Gain[1] back to 33.0595, Reduced Step[1] to: 1.00897, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.65009, Step[2] = 0.150095
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.65009
+ -- Lap number: 112, Total gain steps: 5.19494, Run counter: 1125, Max.run counter: 1125, SqrError: 0.331242
+ -- Step 1, Index: 2, SqrErr (not better): 0.331242, Decreased Gain[2] to: 2.34991
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.34991
+ -- Lap number: 113, Total gain steps: 5.19494, Run counter: 1125, Max.run counter: 1125, SqrError: 0.301129
+ -- Step 2, Index: 2, SqrErr (not better): 0.301129, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.135085, Move to next Gain Index 0
+Optimisation, New Iteration: 18, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 217.998, Step[0] = 4.03588
+ -- PID Gains set to: Kp: 217.998, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 114, Total gain steps: 5.17993, Run counter: 1125, Max.run counter: 1125, SqrError: 0.303391
+ -- Step 1, Index: 0, SqrErr (not better): 0.303391, Decreased Gain[0] to: 209.926
+ -- PID Gains set to: Kp: 209.926, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 115, Total gain steps: 5.17993, Run counter: 1125, Max.run counter: 1125, SqrError: 0.298112
+ -- Step 2, Index: 0, SqrErr (not better): 0.298112, Set Gain[0] back to 213.962, Reduced Step[0] to: 3.63229, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 34.0685, Step[1] = 1.00897
+ -- PID Gains set to: Kp: 213.962, Ki: 34.0685, Kd: 2.5
+ -- Lap number: 116, Total gain steps: 4.77634, Run counter: 1125, Max.run counter: 1125, SqrError: 0.330382
+ -- Step 1, Index: 1, SqrErr (not better): 0.330382, Decreased Gain[1] to: 32.0505
+ -- PID Gains set to: Kp: 213.962, Ki: 32.0505, Kd: 2.5
+ -- Lap number: 117, Total gain steps: 4.77634, Run counter: 1125, Max.run counter: 1125, SqrError: 0.300182
+ -- Step 2, Index: 1, SqrErr (not better): 0.300182, Set Gain[1] back to 33.0595, Reduced Step[1] to: 0.908073, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.63509, Step[2] = 0.135085
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.63509
+ -- Lap number: 118, Total gain steps: 4.67545, Run counter: 1125, Max.run counter: 1125, SqrError: 0.326883
+ -- Step 1, Index: 2, SqrErr (not better): 0.326883, Decreased Gain[2] to: 2.36491
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.36491
+ -- Lap number: 119, Total gain steps: 4.67545, Run counter: 1125, Max.run counter: 1125, SqrError: 0.358115
+ -- Step 2, Index: 2, SqrErr (not better): 0.358115, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.121577, Move to next Gain Index 0
+Optimisation, New Iteration: 19, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 217.594, Step[0] = 3.63229
+ -- PID Gains set to: Kp: 217.594, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 120, Total gain steps: 4.66194, Run counter: 1125, Max.run counter: 1125, SqrError: 0.332238
+ -- Step 1, Index: 0, SqrErr (not better): 0.332238, Decreased Gain[0] to: 210.33
+ -- PID Gains set to: Kp: 210.33, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 121, Total gain steps: 4.66194, Run counter: 1125, Max.run counter: 1125, SqrError: 0.363797
+ -- Step 2, Index: 0, SqrErr (not better): 0.363797, Set Gain[0] back to 213.962, Reduced Step[0] to: 3.26906, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 33.9676, Step[1] = 0.908073
+ -- PID Gains set to: Kp: 213.962, Ki: 33.9676, Kd: 2.5
+ -- Lap number: 122, Total gain steps: 4.29871, Run counter: 1125, Max.run counter: 1125, SqrError: 0.334681
+ -- Step 1, Index: 1, SqrErr (not better): 0.334681, Decreased Gain[1] to: 32.1514
+ -- PID Gains set to: Kp: 213.962, Ki: 32.1514, Kd: 2.5
+ -- Lap number: 123, Total gain steps: 4.29871, Run counter: 1125, Max.run counter: 1125, SqrError: 0.298648
+ -- Step 2, Index: 1, SqrErr (not better): 0.298648, Set Gain[1] back to 33.0595, Reduced Step[1] to: 0.817265, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.62158, Step[2] = 0.121577
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.62158
+ -- Lap number: 124, Total gain steps: 4.2079, Run counter: 1125, Max.run counter: 1125, SqrError: 0.286881
+ -- Step 1, Index: 2, SqrErr (not better): 0.286881, Decreased Gain[2] to: 2.37842
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.37842
+ -- Lap number: 125, Total gain steps: 4.2079, Run counter: 1125, Max.run counter: 1125, SqrError: 0.302996
+ -- Step 2, Index: 2, SqrErr (not better): 0.302996, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.109419, Move to next Gain Index 0
+Optimisation, New Iteration: 20, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 217.231, Step[0] = 3.26906
+ -- PID Gains set to: Kp: 217.231, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 126, Total gain steps: 4.19575, Run counter: 1125, Max.run counter: 1125, SqrError: 0.30915
+ -- Step 1, Index: 0, SqrErr (not better): 0.30915, Decreased Gain[0] to: 210.693
+ -- PID Gains set to: Kp: 210.693, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 127, Total gain steps: 4.19575, Run counter: 1125, Max.run counter: 1125, SqrError: 0.300697
+ -- Step 2, Index: 0, SqrErr (not better): 0.300697, Set Gain[0] back to 213.962, Reduced Step[0] to: 2.94216, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 33.8768, Step[1] = 0.817265
+ -- PID Gains set to: Kp: 213.962, Ki: 33.8768, Kd: 2.5
+ -- Lap number: 128, Total gain steps: 3.86884, Run counter: 1125, Max.run counter: 1125, SqrError: 0.307227
+ -- Step 1, Index: 1, SqrErr (not better): 0.307227, Decreased Gain[1] to: 32.2422
+ -- PID Gains set to: Kp: 213.962, Ki: 32.2422, Kd: 2.5
+ -- Lap number: 129, Total gain steps: 3.86884, Run counter: 1125, Max.run counter: 1125, SqrError: 0.364165
+ -- Step 2, Index: 1, SqrErr (not better): 0.364165, Set Gain[1] back to 33.0595, Reduced Step[1] to: 0.735539, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.60942, Step[2] = 0.109419
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.60942
+ -- Lap number: 130, Total gain steps: 3.78711, Run counter: 1125, Max.run counter: 1125, SqrError: 0.336022
+ -- Step 1, Index: 2, SqrErr (not better): 0.336022, Decreased Gain[2] to: 2.39058
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.39058
+ -- Lap number: 131, Total gain steps: 3.78711, Run counter: 1125, Max.run counter: 1125, SqrError: 0.368679
+ -- Step 2, Index: 2, SqrErr (not better): 0.368679, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.0984771, Move to next Gain Index 0
+Optimisation, New Iteration: 21, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
+ -- Step 2, Gain[0] = 216.904, Step[0] = 2.94216
+ -- PID Gains set to: Kp: 216.904, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 132, Total gain steps: 3.77617, Run counter: 1125, Max.run counter: 1125, SqrError: 0.31007
+ -- Step 1, Index: 0, SqrErr (not better): 0.31007, Decreased Gain[0] to: 211.02
+ -- PID Gains set to: Kp: 211.02, Ki: 33.0595, Kd: 2.5
+ -- Lap number: 133, Total gain steps: 3.77617, Run counter: 1125, Max.run counter: 1125, SqrError: 0.308122
+ -- Step 2, Index: 0, SqrErr (not better): 0.308122, Set Gain[0] back to 213.962, Reduced Step[0] to: 2.64794, Move to next Gain Index 1
+ -- Step 2, Gain[1] = 33.795, Step[1] = 0.735539
+ -- PID Gains set to: Kp: 213.962, Ki: 33.795, Kd: 2.5
+ -- Lap number: 134, Total gain steps: 3.48196, Run counter: 1125, Max.run counter: 1125, SqrError: 0.286639
+ -- Step 1, Index: 1, SqrErr (not better): 0.286639, Decreased Gain[1] to: 32.324
+ -- PID Gains set to: Kp: 213.962, Ki: 32.324, Kd: 2.5
+ -- Lap number: 135, Total gain steps: 3.48196, Run counter: 1125, Max.run counter: 1125, SqrError: 0.298336
+ -- Step 2, Index: 1, SqrErr (not better): 0.298336, Set Gain[1] back to 33.0595, Reduced Step[1] to: 0.661985, Move to next Gain Index 2
+ -- Step 2, Gain[2] = 2.59848, Step[2] = 0.0984771
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.59848
+ -- Lap number: 136, Total gain steps: 3.4084, Run counter: 1125, Max.run counter: 1125, SqrError: 0.327392
+ -- Step 1, Index: 2, SqrErr (not better): 0.327392, Decreased Gain[2] to: 2.40152
+ -- PID Gains set to: Kp: 213.962, Ki: 33.0595, Kd: 2.40152
+ -- Lap number: 137, Total gain steps: 3.4084, Run counter: 1125, Max.run counter: 1125, SqrError: 0.333854
+ -- Step 2, Index: 2, SqrErr (not better): 0.333854, Set Gain[2] back to 2.5, Reduced Step[2] to: 0.0886294, Move to next Gain Index 0
+Optimisation, New Iteration: 22, Kp: 213.962, Ki: 33.0595, Kd: 2.5, Best SqrErr: 0.279354
