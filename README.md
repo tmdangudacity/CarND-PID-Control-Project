@@ -45,10 +45,10 @@ Tips for setting up your environment can be found [here](https://classroom.udaci
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/824/view) points
 
-###Compilation: 
+### Compilation: 
 The implementation including [main.cpp](./src/main.cpp), [PID.h](./src/PID.h) and [PID.cpp](./src/PID.cpp) compiles without error.
 
-###Implementation: 
+### Implementation: 
 The code implements the basic PID controller in [PID.cpp](./src/PID.cpp). The main function UpdateError updates the controller error terms with the value of the current cross track error:
 
 ```
@@ -79,7 +79,7 @@ The output from UpdateError is a steering command calculated as following:
 ```
 The coefficients Kp, Ki and Kd represent gains for the p_error, i_error )and d_error terms.
 
-###Reflection: 
+### Reflection: 
 Compensation for the p_error term eliminates the vehicle cross-track error. Compensation for the d_error term (rate of change of cross-track error) is to reduce oscillation caused by overshoot of p_error compensation. Compensation for the i_error term is to reduce accumulated steady state error caused by vehicle steering's bias and other uncertainty of the system.
 
 The implementation also considers vehicle current speed. For a given constant error of steering command, the vehicle is getting away from the desired trajectory with an acceleration directly proportional to the squared of the vehicle speed. Subsequently vehicle's cross track error after a fix period of time dT also directly proportional to the squared speed. To account for speed change, the output from the PID controller is scaled down by the amount of squared speed. It makes the steering command output from the controller independent from the speed of the vehicle. 
@@ -139,7 +139,7 @@ Kd = 2.5
 
 Result of a test run with optimized gains is captured in [test_run_best_gains.txt](./results/test_run_best_gains.txt). The averaged squared cross track error was about 0.245173 at 33 mph.
 
-###Simulation:
+### Simulation:
 
 The vehicle successfully completed a lap around the track with no tyre leaving the drivable portion of the track surface. The vehicle did not pop up onto ledges or roll over unsafely.
 
