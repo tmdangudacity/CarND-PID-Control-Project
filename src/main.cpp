@@ -34,6 +34,8 @@ int main()
 
   PID pid;
 
+  //Uncomment for following code fragment to run optimisation of PID gains
+
   /*
   //Initialize optimisation
   double gains[] = {250.0, 25.0, 2.5};
@@ -43,7 +45,9 @@ int main()
   pid.InitOptimisation(gains, steps, tolerance, max_runs);
   */
 
-  //Initialize PID controller with result of optimisation
+  //Comment out the following when running optimisation
+
+  //Initialize an instance of PID controller with result of optimisation
   pid.Init(213.962, 33.0595, 2.5);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
@@ -61,25 +65,17 @@ int main()
           double cte = std::stod(j[1]["cte"].get<std::string>());
           double speed = std::stod(j[1]["speed"].get<std::string>());
 
-          //double angle = std::stod(j[1]["steering_angle"].get<std::string>());
-          /*
-          * Calcuate steering value here, remember the steering value is
-          * [-1, 1].
-          * NOTE: Feel free to play around with the throttle and speed. Maybe use
-          * another PID controller to control the speed!
-          */
-
-          double steer_value = 0.0;
-          double temp_speed = speed;
+          //Set a minimum speed used for scaling PID output
           const double MIN_TUNED_SPEED = 10.0;
-
-          if(temp_speed < MIN_TUNED_SPEED)
+          if(speed < MIN_TUNED_SPEED)
           {
-              temp_speed = MIN_TUNED_SPEED;
+              speed = MIN_TUNED_SPEED;
           }
 
-          steer_value = pid.UpdateError(cte) / (temp_speed * temp_speed);
+          //Scaling PID output by squared speed
+          double steer_value = pid.UpdateError(cte) / (speed * speed);
 
+          //Limit steer value between -1.0 and 1.0
           if(steer_value >  1.0)
           {
               steer_value =  1.0;

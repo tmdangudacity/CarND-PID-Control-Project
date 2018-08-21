@@ -18,12 +18,12 @@ class PID
         virtual ~PID();
 
         /*
-         * Initialize PID.
+         * Initialize PID gains
          */
         bool Init(double in_Kp, double in_Ki, double in_Kd);
 
         /*
-         * Initialize parameter optimisation
+         * Initialize PID gain optimisation
          */
         bool InitOptimisation(double init_pid_gains[],
                               double init_gain_steps[],

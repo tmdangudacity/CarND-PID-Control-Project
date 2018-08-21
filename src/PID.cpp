@@ -19,7 +19,7 @@ PID::PID()
  best_sqr_err(-1.0),
  run_counter(0)
 {
-    memset(pid_gains, 0.0, 3);
+    memset(pid_gains,  0.0, 3);
     memset(gain_steps, 0.0, 3);
 }
 
@@ -81,8 +81,8 @@ bool PID::InitOptimisation(double init_pid_gains[],
                            unsigned int in_max_run_counter)
 {
     //Array size must be 3
-    //Parameters must not be negative and must not all zero
-    //Parameter steps must be positive
+    //Initial gains must not be negative and must not all zero
+    //Initial gain steps, total gain step tolerance and max. number of run counter per lap must be positive
     bool ret = (0.0 <= init_pid_gains[0]) &&
                (0.0 <= init_pid_gains[1]) &&
                (0.0 <= init_pid_gains[2]) &&
@@ -99,7 +99,7 @@ bool PID::InitOptimisation(double init_pid_gains[],
         memcpy(gain_steps, init_gain_steps, sizeof(gain_steps));
         gain_step_tol    = in_gain_step_tol;
         max_run_counter  = in_max_run_counter;
-        best_sqr_err  = -1.0;
+        best_sqr_err     = -1.0;
         run_optimisation = true;
 
         std::cout << "Optimisation"
@@ -109,7 +109,7 @@ bool PID::InitOptimisation(double init_pid_gains[],
                   << ", MaxRunCounter: "       << max_run_counter
                   << std::endl;
 
-        //Initialise PID controller using initial parameters
+        //Initialise PID controller using initial gains (P, I, D)
         Init(pid_gains[0], pid_gains[1], pid_gains[2]);
     }
 
@@ -133,6 +133,8 @@ double PID::UpdateError(double cte)
             p_error = cte;
 
             i_error += cte * dt;
+
+            //Limit the integral term winding up
             if(i_error > 10.0)
             {
                 i_error = 10.0;
@@ -144,6 +146,7 @@ double PID::UpdateError(double cte)
 
             d_error = (cte - last_cte) / dt;
 
+            //Update averaged dt
             avg_dt = (run_counter * avg_dt + dt)/(run_counter + 1);
         }
         else
@@ -166,6 +169,7 @@ double PID::UpdateError(double cte)
         }
     }
 
+    //Update averaged squared error
     sqr_err = (run_counter * sqr_err + (cte * cte)) / (run_counter + 1);
     ++run_counter;
 
@@ -203,9 +207,16 @@ bool PID::IsInitialised() const
 
 void PID::RunOptimisation()
 {
+    //Iteration
     static unsigned int iter  = 0;
+
+    //Index of currently optimised gain
     static unsigned int index = 0;
+
+    //Step of Twiddle for current gain index
     static unsigned int step_index  = 0;
+
+    //Running lap counter
     static unsigned int lap_counter = 0;
 
     if(run_optimisation)
@@ -298,7 +309,7 @@ void PID::RunOptimisation()
                     }
                     else
                     {
-                        //Go back two steps for current gain
+                        //Go back two steps for current gain if the averaged squared error is not better
                         pid_gains[index] -= 2.0 * gain_steps[index];
 
                         std::cout << " -- Step "               << step_index
