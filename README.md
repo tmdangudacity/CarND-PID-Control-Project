@@ -77,7 +77,7 @@ The output from UpdateError is a steering command calculated as following:
 ```
     double pid_output = -( (Kp * p_error) + (Ki * i_error) + (Kd * d_error) );
 ```
-The coefficients Kp, Ki and Kd represent gains for the p_error, i_error )and d_error terms.
+The coefficients Kp, Ki and Kd represent gains for the p_error, i_error and d_error terms.
 
 ### Reflection: 
 Compensation for the p_error term eliminates the vehicle cross-track error. Compensation for the d_error term (rate of change of cross-track error) is to reduce oscillation caused by overshoot of p_error compensation. Compensation for the i_error term is to reduce accumulated steady state error caused by vehicle steering's bias and other uncertainty of the system.
